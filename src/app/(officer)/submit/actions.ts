@@ -8,7 +8,7 @@ import { nextDocket } from "@/lib/docket";
 import { CATEGORIES } from "@/lib/bn";
 import { getLocale } from "@/lib/i18n/locale";
 import { t } from "@/lib/i18n/dict";
-import { Prisma, type Status } from "@/generated/prisma/client";
+import { Prisma, type Status } from "@prisma/client";
 import { isMaturityKey, parseTechTags } from "@/lib/tech";
 
 export type CreateIdeaResult = { ok: true; docket: string } | { ok: false; error: string };

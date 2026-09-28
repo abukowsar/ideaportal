@@ -6,7 +6,7 @@ import { roleLabel, districtLabel, formatNumber } from "@/lib/i18n/vocab";
 import { t } from "@/lib/i18n/dict";
 import type { Locale } from "@/lib/i18n/locale";
 import { createUser, updateUser, deleteUser } from "../actions";
-import type { Role } from "@/generated/prisma/client";
+import type { Role } from "@prisma/client";
 
 export type UserRow = {
   id: string;

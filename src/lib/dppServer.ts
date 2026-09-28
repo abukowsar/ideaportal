@@ -1,4 +1,4 @@
-import type { Dpp, Role } from "@/generated/prisma/client";
+import type { Dpp, Role } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { toIdeaView } from "@/lib/ideaView";
 import type { DppCostItem, DppView } from "@/lib/dpp";

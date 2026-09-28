@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Role } from "@/generated/prisma/client";
+import type { Role } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { t, type DictKey } from "@/lib/i18n/dict";
 import type { Locale } from "@/lib/i18n/locale";

@@ -1,4 +1,4 @@
-import type { Role, Status } from "@/generated/prisma/client";
+import type { Role, Status } from "@prisma/client";
 import type { Locale } from "./locale";
 
 const BN_DIGITS = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];

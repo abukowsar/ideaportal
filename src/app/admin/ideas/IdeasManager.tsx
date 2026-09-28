@@ -7,7 +7,7 @@ import { statusLabel, categoryLabel, districtLabel, formatNumber, ideaLocationLa
 import { t } from "@/lib/i18n/dict";
 import type { Locale } from "@/lib/i18n/locale";
 import { setIdeaStatus } from "../actions";
-import type { Status } from "@/generated/prisma/client";
+import type { Status } from "@prisma/client";
 import DppAction from "@/components/DppAction";
 import Icon from "@/components/Icon";
 

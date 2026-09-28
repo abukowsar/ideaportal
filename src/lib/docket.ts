@@ -1,4 +1,4 @@
-import type { Prisma } from "@/generated/prisma/client";
+import type { Prisma } from "@prisma/client";
 import { DIST_CODE } from "@/lib/bn";
 
 export async function nextDocket(

@@ -8,7 +8,7 @@ import { t, type DictKey } from "@/lib/i18n/dict";
 import { formatNumber, statusLabel, districtLabel, roleLabel } from "@/lib/i18n/vocab";
 import { scopeWhere, toIdeaView } from "@/lib/ideaView";
 import type { IdeaStatus, Viewer } from "@/lib/ideaFormat";
-import type { Prisma } from "@/generated/prisma/client";
+import type { Prisma } from "@prisma/client";
 import DashboardList from "./DashboardList";
 import Icon from "@/components/Icon";
 

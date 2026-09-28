@@ -1,4 +1,4 @@
-import type { Idea, Prisma, Role } from "@/generated/prisma/client";
+import type { Idea, Prisma, Role } from "@prisma/client";
 import type { IdeaView, TeamMemberData, WorkPlanRowData } from "@/lib/ideaFormat";
 import { parseTechTags } from "@/lib/tech";
 

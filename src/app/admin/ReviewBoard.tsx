@@ -10,7 +10,7 @@ import IdeaDetailSections from "@/components/IdeaDetailSections";
 import DppAction from "@/components/DppAction";
 import type { TeamMemberData, WorkPlanRowData } from "@/lib/ideaFormat";
 import { deleteIdea, setIdeaStatus } from "./actions";
-import type { Status } from "@/generated/prisma/client";
+import type { Status } from "@prisma/client";
 import Icon from "@/components/Icon";
 
 export type IdeaCardData = {

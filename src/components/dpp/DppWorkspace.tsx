@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { Role } from "@/generated/prisma/client";
+import type { Role } from "@prisma/client";
 import { t } from "@/lib/i18n/dict";
 import type { Locale } from "@/lib/i18n/locale";
 import { districtLabel } from "@/lib/i18n/vocab";

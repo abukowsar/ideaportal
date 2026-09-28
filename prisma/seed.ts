@@ -1,10 +1,9 @@
 import "dotenv/config";
-import { Maturity, PrismaClient, Status } from "../src/generated/prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { Maturity, PrismaClient, Status } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
-const adapter = new PrismaBetterSqlite3({ url: process.env.DATABASE_URL! });
-const prisma = new PrismaClient({ adapter });
+
+const prisma = new PrismaClient();
 
 const DEMO_PASSWORD = "demo1234";
 

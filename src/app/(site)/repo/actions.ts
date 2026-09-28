@@ -6,7 +6,7 @@ import { authOptions } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { getLocale } from "@/lib/i18n/locale";
 import { t } from "@/lib/i18n/dict";
-import type { Status } from "@/generated/prisma/client";
+import type { Status } from "@prisma/client";
 
 const NEXT_STATUS: Partial<Record<Status, Status>> = {
   UPAZILA: "DISTRICT",
