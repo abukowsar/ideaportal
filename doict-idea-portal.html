@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ডিওআইসিটি আইডিয়া পোর্টাল — তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর</title>
+<meta name="description" content="উপজেলা থেকে জেলা হয়ে সদর দপ্তর — মাঠপর্যায়ের উদ্ভাবনী প্রস্তাবনা জমা, যাচাই ও উন্মুক্ত রিড-অনলি রিপোজিটরি। তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0A5C43;
+  --green-deep:#07402F;
+  --green-tint:#E3EFEA;
+  --gold:#B98A2F;
+  --gold-soft:#E8D5AC;
+  --cream:#F7F1E3;
+  --paper:#FFFDF7;
+  --ink:#22302B;
+  --muted:#5D6B64;
+  --red:#C5352B;
+  --line:rgba(10,92,67,.16);
+  --radius:14px;
+  --shadow:0 10px 30px rgba(10,92,67,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Hind Siliguri',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ---- govt ribbon ---- */
+.ribbon{background:var(--green-deep);color:#DDEBE4;font-size:.78rem;padding:7px 0}
+.ribbon .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.ribbon .docket{color:var(--gold-soft)}
+
+/* ---- header ---- */
+header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{
+  width:48px;height:48px;flex:0 0 48px;border-radius:50%;
+  background:radial-gradient(circle at 32% 30%, #12775A, var(--green) 62%, var(--green-deep));
+  display:grid;place-items:center;color:var(--gold-soft);
+  font-family:'Tiro Bangla',serif;font-size:1.3rem;border:2px solid var(--gold);
+}
+.brand-name{line-height:1.28}
+.brand-name b{display:block;color:var(--green);font-size:1.02rem}
+.brand-name small{color:var(--muted);font-size:.73rem}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{
+  text-decoration:none;color:var(--green-deep);font-weight:600;font-size:.88rem;
+  padding:8px 13px;border-radius:8px;
+}
+nav a:hover{background:var(--green-tint)}
+nav a:focus-visible{outline:3px solid var(--gold)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;border-radius:999px;
+  padding:12px 26px;font-weight:700;font-size:.98rem;text-decoration:none;
+  border:2px solid transparent;cursor:pointer;font-family:inherit;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn-gold{background:var(--gold);color:#2B1F06;box-shadow:0 6px 18px rgba(185,138,47,.35)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-green{background:var(--green);color:var(--cream)}
+.btn-green:hover{background:var(--green-deep)}
+.btn-ghost{border-color:var(--cream);color:var(--cream)}
+.btn-ghost:hover{background:rgba(247,241,227,.12)}
+.btn-sm{padding:8px 18px;font-size:.85rem}
+
+/* ---- hero ---- */
+.hero{
+  background:
+    radial-gradient(900px 420px at 88% -10%, rgba(185,138,47,.24), transparent 60%),
+    linear-gradient(160deg, var(--green-deep) 0%, var(--green) 58%, #0D6B4F 100%);
+  color:var(--cream);position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(247,241,227,.07) 1px, transparent 1px);
+  background-size:26px 26px;
+}
+.hero-in{position:relative;z-index:1;padding:60px 0 54px;max-width:60rem}
+.gov-line{display:flex;align-items:center;gap:10px;font-size:.82rem;color:#CFE1D9;margin-bottom:18px}
+.gov-line::before{content:"";width:26px;height:2px;background:var(--gold)}
+.hero h1{
+  font-family:'Tiro Bangla',serif;font-weight:400;
+  font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.22;margin-bottom:16px;
+}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero p.lede{font-size:1.03rem;color:#D9E7E0;max-width:38rem;font-weight:300;margin-bottom:26px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{
+  position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  padding:0 0 46px;
+}
+.stat{
+  background:rgba(247,241,227,.08);border:1px solid rgba(232,213,172,.26);
+  border-radius:12px;padding:16px 18px;
+}
+.stat .num{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:700;color:#fff;display:block;line-height:1.15}
+.stat .lbl{font-size:.8rem;color:#BED5CB}
+
+/* ---- sections ---- */
+section{padding:56px 0}
+.sec-head{max-width:48rem;margin-bottom:32px}
+.sec-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;display:block;margin-bottom:8px;
+}
+.sec-head h2{
+  font-family:'Tiro Bangla',serif;font-weight:400;color:var(--green-deep);
+  font-size:clamp(1.55rem,3.2vw,2.15rem);line-height:1.26;margin-bottom:10px;
+}
+.sec-head p{color:var(--muted)}
+
+/* ---- workflow pipeline (signature) ---- */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:stretch}
+.flow-step{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;box-shadow:0 4px 14px rgba(10,92,67,.05);position:relative;
+}
+.flow-step .f-stage{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--paper);background:var(--green);
+  display:inline-block;border-radius:5px;padding:3px 9px;margin-bottom:12px;
+}
+.flow-step h3{color:var(--green-deep);font-size:1.05rem;margin-bottom:7px}
+.flow-step p{font-size:.9rem;color:var(--muted)}
+.flow-arrow{
+  display:grid;place-items:center;padding:0 8px;
+  color:var(--gold);font-size:1.5rem;font-weight:700;
+}
+.flow-note{
+  margin-top:16px;font-size:.84rem;color:var(--muted);
+  border-left:3px solid var(--gold);padding-left:12px;
+}
+/* the open repository callout */
+.open-callout{
+  margin-top:26px;border-radius:var(--radius);
+  background:linear-gradient(150deg,#FBF4E4,#F5E9CE);
+  border:1.5px solid var(--gold-soft);padding:26px 26px;
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+}
+.open-callout .lock{
+  width:52px;height:52px;border-radius:12px;background:var(--gold);
+  display:grid;place-items:center;font-size:1.5rem;color:#2B1F06;flex:0 0 52px;
+}
+.open-callout h3{color:#7A5A1B;font-size:1.1rem;margin-bottom:6px}
+.open-callout p{font-size:.93rem;color:#5C4716}
+.open-callout .ro-badge{
+  display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:700;
+  letter-spacing:.12em;background:#2B1F06;color:var(--gold-soft);
+  border-radius:5px;padding:3px 9px;margin-left:8px;vertical-align:middle;
+}
+
+/* ---- submission form ---- */
+.form-band{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-weight:600;font-size:.9rem;color:var(--green-deep)}
+.field label .req{color:var(--red)}
+.field input,.field select,.field textarea{
+  font-family:inherit;font-size:.95rem;color:var(--ink);
+  background:var(--cream);border:1.5px solid var(--line);border-radius:10px;
+  padding:11px 14px;transition:border-color .15s ease;
+}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--green);background:#FDFBF4;
+}
+.field .hint{font-size:.76rem;color:var(--muted)}
+.form-actions{grid-column:1/-1;display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:6px}
+.form-msg{font-size:.9rem;font-weight:600;color:var(--green);display:none}
+.form-msg.show{display:block}
+.form-msg .mono{color:var(--gold)}
+
+/* ---- repository ---- */
+.repo-controls{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:22px;
+}
+.repo-controls input,.repo-controls select{
+  font-family:inherit;font-size:.9rem;background:var(--paper);
+  border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;color:var(--ink);
+}
+.repo-controls input{flex:1;min-width:200px}
+.repo-controls input:focus,.repo-controls select:focus{outline:none;border-color:var(--green)}
+.ro-strip{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em;
+  background:var(--green-deep);color:var(--gold-soft);border-radius:999px;padding:6px 14px;
+}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px 20px 18px;box-shadow:0 4px 14px rgba(10,92,67,.05);
+  cursor:pointer;transition:transform .16s ease, box-shadow .16s ease;
+  display:flex;flex-direction:column;gap:10px;text-align:left;font-family:inherit;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.card .c-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card .c-docket{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold);font-weight:700}
+.status{
+  font-size:.7rem;font-weight:700;border-radius:5px;padding:3px 9px;white-space:nowrap;
+}
+.st-upazila{background:var(--green-tint);color:var(--green-deep)}
+.st-district{background:#FBF4E4;color:#7A5A1B;border:1px solid var(--gold-soft)}
+.st-hq{background:var(--green);color:var(--cream)}
+.st-selected{background:var(--gold);color:#2B1F06}
+.card h3{color:var(--green-deep);font-size:1.02rem;line-height:1.4}
+.card .c-sum{font-size:.87rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .c-meta{
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-size:.78rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto;
+}
+.empty{
+  text-align:center;color:var(--muted);padding:40px 0;font-size:.95rem;display:none;
+}
+.empty.show{display:block}
+
+/* ---- modal ---- */
+.modal-back{
+  position:fixed;inset:0;background:rgba(7,64,47,.55);backdrop-filter:blur(3px);
+  display:none;place-items:center;z-index:100;padding:20px;
+}
+.modal-back.open{display:grid}
+.modal{
+  background:var(--paper);border-radius:18px;max-width:640px;width:100%;
+  max-height:86vh;overflow:auto;padding:30px 30px 26px;position:relative;
+  box-shadow:0 24px 60px rgba(7,64,47,.4);
+}
+.modal .m-close{
+  position:absolute;top:14px;right:14px;border:0;background:var(--cream);
+  width:36px;height:36px;border-radius:50%;font-size:1.1rem;cursor:pointer;color:var(--green-deep);
+}
+.modal .m-close:focus-visible{outline:3px solid var(--gold)}
+.modal .c-docket{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold);font-weight:700}
+.modal h3{font-family:'Tiro Bangla',serif;font-weight:400;color:var(--green-deep);font-size:1.5rem;margin:8px 0 4px;line-height:1.3}
+.modal .m-sub{font-size:.85rem;color:var(--muted);margin-bottom:16px}
+.modal .m-body{font-size:.95rem;margin-bottom:18px}
+.modal .m-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.modal .m-cell{background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.modal .m-cell b{display:block;font-size:.72rem;color:var(--muted);font-weight:600}
+.modal .m-cell span{font-size:.9rem;color:var(--green-deep);font-weight:600}
+.modal .m-ro{
+  display:flex;align-items:center;gap:9px;font-size:.8rem;color:#7A5A1B;
+  background:#FBF4E4;border:1px solid var(--gold-soft);border-radius:10px;padding:10px 14px;
+}
+
+/* ---- footer ---- */
+footer{background:var(--green-deep);color:#A9C4B8;padding:32px 0;font-size:.84rem}
+.foot-in{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+footer a{color:var(--gold-soft);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+@media (max-width:920px){
+  .flow{grid-template-columns:1fr}
+  .flow-arrow{transform:rotate(90deg);padding:6px 0}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .form-grid{grid-template-columns:1fr}
+  .open-callout{grid-template-columns:1fr}
+  nav{display:none}
+  .modal .m-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ribbon -->
+<div class="ribbon">
+  <div class="wrap">
+    <span>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার · তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর</span>
+    <span class="docket mono">DoICT/HQ/IDEA/2026/01</span>
+  </div>
+</div>
+
+<!-- header -->
+<header>
+  <div class="wrap header-in">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">উ</div>
+      <div class="brand-name">
+        <b>ডিওআইসিটি আইডিয়া পোর্টাল</b>
+        <small>মাঠপর্যায়ের উদ্ভাবনী প্রস্তাবনা ব্যবস্থাপনা প্ল্যাটফর্ম</small>
+      </div>
+    </div>
+    <nav aria-label="প্রধান নেভিগেশন">
+      <a href="#flow">প্রক্রিয়া</a>
+      <a href="#submit">প্রস্তাব জমা</a>
+      <a href="#repo">আইডিয়া রিপোজিটরি</a>
+    </nav>
+    <a class="btn btn-gold btn-sm" href="#submit">প্রস্তাব জমা দিন</a>
+  </div>
+</header>
+
+<!-- hero -->
+<div class="hero">
+  <div class="wrap hero-in">
+    <div class="gov-line">তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর · সদর দপ্তর, ঢাকা</div>
+    <h1>উপজেলার <em>উদ্ভাবন</em>, এখন<br>সমগ্র অধিদপ্তরের <em>জ্ঞানভান্ডার</em></h1>
+    <p class="lede">উপজেলা কার্যালয় থেকে প্রস্তাবনা জমা → জেলা কার্যালয়ে যাচাই-বাছাই → উল্লেখযোগ্য প্রস্তাব সদর দপ্তরে প্রেরণ। আর প্রতিটি প্রস্তাবের মূল কনসেপ্ট থাকছে অধিদপ্তরের সকল কর্মকর্তার জন্য রিড-অনলি মোডে উন্মুক্ত — যেন সেরা আইডিয়া কখনো হারিয়ে না যায়।</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#submit">প্রস্তাব জমা দিন →</a>
+      <a class="btn btn-ghost" href="#repo">রিপোজিটরি ব্রাউজ করুন</a>
+    </div>
+  </div>
+  <div class="wrap hero-stats">
+    <div class="stat"><span class="num" id="s-total">০</span><span class="lbl">মোট প্রস্তাবনা</span></div>
+    <div class="stat"><span class="num" id="s-dist">০</span><span class="lbl">জেলা কভারেজ</span></div>
+    <div class="stat"><span class="num" id="s-hq">০</span><span class="lbl">সদর দপ্তরে প্রেরিত</span></div>
+    <div class="stat"><span class="num" id="s-sel">০</span><span class="lbl">নির্বাচিত উদ্যোগ</span></div>
+  </div>
+</div>
+
+<!-- workflow -->
+<section id="flow">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">প্রস্তাবনা প্রবাহ</span>
+      <h2>উপজেলা থেকে সদর দপ্তর — তিন ধাপের প্রক্রিয়া</h2>
+      <p>প্রতিটি প্রস্তাবনা নির্ধারিত প্রশাসনিক ধাপ অনুসরণ করে। প্রতিটি ধাপে প্রস্তাবের স্ট্যাটাস পোর্টালে হালনাগাদ হয়।</p>
+    </div>
+    <div class="flow reveal">
+      <div class="flow-step">
+        <span class="f-stage">ধাপ ০১ · উপজেলা</span>
+        <h3>প্রস্তাবনা জমা</h3>
+        <p>উপজেলা কার্যালয়ের সহকারী প্রোগ্রামার/কর্মকর্তা এই পোর্টালের মাধ্যমে উদ্ভাবনী প্রস্তাবনা জমা দেন — শিরোনাম, মূল কনসেপ্ট, প্রত্যাশিত প্রভাবসহ।</p>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step">
+        <span class="f-stage">ধাপ ০২ · জেলা</span>
+        <h3>যাচাই-বাছাই</h3>
+        <p>জেলা কার্যালয় প্রস্তাবনাগুলো যাচাই-বাছাই করে। সম্ভাব্যতা, প্রভাব ও বাস্তবায়নযোগ্যতার ভিত্তিতে মূল্যায়ন সম্পন্ন হয়।</p>
+      </div>
+      <div class="flow-arrow" aria-hidden="true">→</div>
+      <div class="flow-step">
+        <span class="f-stage">ধাপ ০৩ · সদর দপ্তর</span>
+        <h3>উল্লেখযোগ্য ১–২টি প্রেরণ</h3>
+        <p>জেলা থেকে উল্লেখযোগ্য ১–২টি প্রস্তাব সদর দপ্তরে প্রেরিত হয় এবং জাতীয় পর্যায়ে বাস্তবায়নের জন্য বিবেচিত হয়।</p>
+      </div>
+    </div>
+    <div class="open-callout reveal">
+      <div class="lock" aria-hidden="true">🔍</div>
+      <div>
+        <h3>উন্মুক্ত কনসেপ্ট রিপোজিটরি <span class="ro-badge">READ-ONLY</span></h3>
+        <p>জেলা পর্যায়ে বাছাই না হলেও কোনো আইডিয়া হারিয়ে যায় না। জমাকৃত <b>প্রতিটি</b> প্রস্তাবের মূল কনসেপ্ট অধিদপ্তরের সকল কর্মকর্তার জন্য রিড-অনলি মোডে উন্মুক্ত থাকে। ফলে সদর দপ্তর প্রয়োজনে সরাসরি রিপোজিটরি থেকে সম্ভাবনাময় আইডিয়া চিহ্নিত করতে পারে, আর এক জেলার উদ্ভাবন অন্য জেলায় অনুপ্রেরণা হয়ে ওঠে।</p>
+        <p class="flow-note" style="margin-top:12px">সম্পাদনার অধিকার শুধু জমাদানকারী উপজেলা ও যাচাইকারী জেলা কার্যালয়ের; অন্য সবাই কেবল দেখতে পারবেন।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- submission form -->
+<section class="form-band" id="submit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">ধাপ ০১ · উপজেলা কার্যালয়</span>
+      <h2>নতুন প্রস্তাবনা জমা দিন</h2>
+      <p>জমাদানের পর প্রস্তাবটি স্বয়ংক্রিয়ভাবে একটি ডকেট নম্বর পাবে এবং সংশ্লিষ্ট জেলা কার্যালয়ের যাচাই-তালিকায় যুক্ত হবে। মূল কনসেপ্টটি একই সাথে উন্মুক্ত রিপোজিটরিতে রিড-অনলি মোডে প্রদর্শিত হবে।</p>
+    </div>
+    <div class="form-grid reveal" id="idea-form">
+      <div class="field full">
+        <label for="f-title">প্রস্তাবনার শিরোনাম <span class="req">*</span></label>
+        <input id="f-title" type="text" placeholder="যেমন: ইউনিয়ন ডিজিটাল সেন্টারে এআই-ভিত্তিক সেবা সহায়ক">
+      </div>
+      <div class="field">
+        <label for="f-cat">ক্যাটাগরি <span class="req">*</span></label>
+        <select id="f-cat">
+          <option value="">নির্বাচন করুন</option>
+          <option>ডিজিটাল সেবা</option>
+          <option>এআই ও ডেটা</option>
+          <option>শিক্ষা ও দক্ষতা</option>
+          <option>কৃষি ও পরিবেশ</option>
+          <option>স্বাস্থ্যসেবা</option>
+          <option>অবকাঠামো ও সংযোগ</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-district">জেলা <span class="req">*</span></label>
+        <select id="f-district">
+          <option value="">নির্বাচন করুন</option>
+          <option>ঢাকা</option><option>চট্টগ্রাম</option><option>লক্ষ্মীপুর</option>
+          <option>কুমিল্লা</option><option>বগুড়া</option><option>রাজশাহী</option>
+          <option>খুলনা</option><option>সিলেট</option><option>রংপুর</option>
+          <option>বরিশাল</option><option>ময়মনসিংহ</option><option>কিশোরগঞ্জ</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-upazila">উপজেলা <span class="req">*</span></label>
+        <input id="f-upazila" type="text" placeholder="যেমন: রায়পুর">
+      </div>
+      <div class="field">
+        <label for="f-name">জমাদানকারী কর্মকর্তার নাম ও পদবি</label>
+        <input id="f-name" type="text" placeholder="যেমন: মোঃ রহিম উদ্দিন, সহকারী প্রোগ্রামার">
+        <span class="hint">প্রকৃত সিস্টেমে এটি অফিস লগইন থেকে স্বয়ংক্রিয়ভাবে আসবে</span>
+      </div>
+      <div class="field full">
+        <label for="f-concept">মূল কনসেপ্ট (সংক্ষিপ্ত সারাংশ) <span class="req">*</span></label>
+        <textarea id="f-concept" placeholder="সমস্যাটি কী, প্রস্তাবিত সমাধান কী এবং কীভাবে কাজ করবে — ৩–৫ বাক্যে লিখুন। এই অংশটিই রিড-অনলি রিপোজিটরিতে সকল কর্মকর্তার জন্য উন্মুক্ত থাকবে।"></textarea>
+      </div>
+      <div class="field full">
+        <label for="f-impact">প্রত্যাশিত প্রভাব</label>
+        <textarea id="f-impact" style="min-height:80px" placeholder="কতজন নাগরিক/কর্মকর্তা উপকৃত হবেন, সেবার মান বা সময় কতটা উন্নত হবে ইত্যাদি।"></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-green" onclick="submitIdea()">প্রস্তাবনা জমা দিন</button>
+        <span class="form-msg" id="form-msg"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- repository -->
+<section id="repo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">উন্মুক্ত জ্ঞানভান্ডার</span>
+      <h2>আইডিয়া রিপোজিটরি</h2>
+      <p>অধিদপ্তরের সকল কর্মকর্তার জন্য উন্মুক্ত। যেকোনো কার্ডে ক্লিক করে বিস্তারিত দেখুন — সম্পাদনা কেবল সংশ্লিষ্ট উপজেলা ও জেলা কার্যালয়ের এখতিয়ারে।</p>
+    </div>
+    <div class="repo-controls reveal">
+      <span class="ro-strip">🔒 READ-ONLY MODE · সকল DoICT কর্মকর্তা</span>
+      <input type="search" id="q" placeholder="শিরোনাম বা কনসেপ্টে খুঁজুন…" oninput="renderRepo()">
+      <select id="f-filter-dist" onchange="renderRepo()">
+        <option value="">সব জেলা</option>
+      </select>
+      <select id="f-filter-status" onchange="renderRepo()">
+        <option value="">সব স্ট্যাটাস</option>
+        <option value="upazila">উপজেলায় জমা</option>
+        <option value="district">জেলায় যাচাই চলছে</option>
+        <option value="hq">সদর দপ্তরে প্রেরিত</option>
+        <option value="selected">নির্বাচিত</option>
+      </select>
+    </div>
+    <div class="cards" id="cards"></div>
+    <div class="empty" id="empty">কোনো প্রস্তাবনা পাওয়া যায়নি। ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন।</div>
+  </div>
+</section>
+
+<!-- modal -->
+<div class="modal-back" id="modal-back" onclick="if(event.target===this)closeModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <button class="m-close" onclick="closeModal()" aria-label="বন্ধ করুন">✕</button>
+    <span class="c-docket" id="m-docket"></span>
+    <h3 id="m-title"></h3>
+    <div class="m-sub" id="m-sub"></div>
+    <div class="m-grid">
+      <div class="m-cell"><b>জেলা</b><span id="m-dist"></span></div>
+      <div class="m-cell"><b>উপজেলা</b><span id="m-upz"></span></div>
+      <div class="m-cell"><b>ক্যাটাগরি</b><span id="m-cat"></span></div>
+      <div class="m-cell"><b>বর্তমান স্ট্যাটাস</b><span id="m-status"></span></div>
+    </div>
+    <div class="m-body" id="m-concept"></div>
+    <div class="m-body" id="m-impact" style="color:var(--muted);font-size:.9rem"></div>
+    <div class="m-ro">🔒 রিড-অনলি ভিউ — এই প্রস্তাবটি সম্পাদনার অধিকার কেবল জমাদানকারী উপজেলা ও যাচাইকারী জেলা কার্যালয়ের।</div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer>
+  <div class="wrap foot-in">
+    <div>© ২০২৬ তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর · গণপ্রজাতন্ত্রী বাংলাদেশ সরকার<br>
+    <small>এটি একটি ধারণাগত প্রোটোটাইপ — অভ্যন্তরীণ মূল্যায়নের জন্য প্রস্তুতকৃত</small></div>
+    <div class="mono">DoICT/HQ/IDEA/2026/01</div>
+  </div>
+</footer>
+
+<script>
+/* ---------- data ---------- */
+const STATUS = {
+  upazila:  {label:'উপজেলায় জমা', cls:'st-upazila'},
+  district: {label:'জেলায় যাচাই চলছে', cls:'st-district'},
+  hq:       {label:'সদর দপ্তরে প্রেরিত', cls:'st-hq'},
+  selected: {label:'নির্বাচিত', cls:'st-selected'}
+};
+const DIST_CODE = {
+  'ঢাকা':'DHA','চট্টগ্রাম':'CTG','লক্ষ্মীপুর':'LAK','কুমিল্লা':'CUM','বগুড়া':'BOG',
+  'রাজশাহী':'RAJ','খুলনা':'KHU','সিলেট':'SYL','রংপুর':'RAN','বরিশাল':'BAR',
+  'ময়মনসিংহ':'MYM','কিশোরগঞ্জ':'KIS'
+};
+const bnD = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+const toBn = n => String(n).replace(/\d/g, d => bnD[+d]);
+
+let ideas = [
+  {t:'ইউনিয়ন ডিজিটাল সেন্টারে এআই সেবা সহায়ক', cat:'এআই ও ডেটা', dist:'লক্ষ্মীপুর', upz:'রায়পুর',
+   c:'ইউনিয়ন ডিজিটাল সেন্টারে আগত নাগরিকদের সাধারণ সরকারি সেবার প্রশ্নের উত্তর দিতে বাংলা ভাষার এআই চ্যাট সহায়ক। উদ্যোক্তার কাজের চাপ কমবে এবং সেবাপ্রার্থীর অপেক্ষার সময় হ্রাস পাবে।',
+   i:'দৈনিক গড়ে ৬০+ সেবাপ্রার্থী উপকৃত; সেবা প্রদানের গড় সময় ৪০% হ্রাসের সম্ভাবনা।', st:'hq', by:'সহকারী প্রোগ্রামার, রায়পুর'},
+  {t:'উপজেলা পর্যায়ে সাইবার সচেতনতা মোবাইল ইউনিট', cat:'শিক্ষা ও দক্ষতা', dist:'চট্টগ্রাম', upz:'পটিয়া',
+   c:'স্কুল-কলেজে ঘুরে ঘুরে সাইবার নিরাপত্তা, ডিজিটাল প্রতারণা ও তথ্য যাচাই বিষয়ে হাতে-কলমে প্রশিক্ষণ দেওয়ার ভ্রাম্যমাণ ইউনিট — DoICT উপজেলা কার্যালয়ের নেতৃত্বে।',
+   i:'বছরে ৮,০০০+ শিক্ষার্থীর কাছে সরাসরি সচেতনতা কার্যক্রম পৌঁছাবে।', st:'selected', by:'সহকারী প্রোগ্রামার, পটিয়া'},
+  {t:'কৃষকের জন্য ভয়েস-ভিত্তিক আবহাওয়া ও বাজারদর সেবা', cat:'কৃষি ও পরিবেশ', dist:'বগুড়া', upz:'শেরপুর',
+   c:'স্মার্টফোন ছাড়াই সাধারণ ফোনকলে ভয়েস মেনুর মাধ্যমে স্থানীয় আবহাওয়া, বীজ-সারের পরামর্শ ও দৈনিক বাজারদর শোনার ব্যবস্থা। স্থানীয় কৃষি অফিসের ডেটার সাথে সংযুক্ত।',
+   i:'উপজেলার প্রায় ৪৫,০০০ কৃষি-নির্ভর পরিবারের তথ্যপ্রাপ্তি সহজ হবে।', st:'district', by:'সহকারী প্রোগ্রামার, শেরপুর'},
+  {t:'ডিজিটাল সেবা কিয়স্ক: হাসপাতালের টিকিট ও সিরিয়াল', cat:'স্বাস্থ্যসেবা', dist:'খুলনা', upz:'ডুমুরিয়া',
+   c:'উপজেলা স্বাস্থ্য কমপ্লেক্সে সেলফ-সার্ভিস কিয়স্কে রোগীর টিকিট, সিরিয়াল ও বিভাগভিত্তিক দিকনির্দেশনা — বাংলা ইন্টারফেস ও প্রিন্টেড টোকেনসহ।',
+   i:'বহির্বিভাগে দৈনিক ৩০০+ রোগীর লাইন ব্যবস্থাপনা শৃঙ্খলাবদ্ধ হবে।', st:'district', by:'সহকারী প্রোগ্রামার, ডুমুরিয়া'},
+  {t:'স্কুল আইসিটি ল্যাব মনিটরিং ড্যাশবোর্ড', cat:'শিক্ষা ও দক্ষতা', dist:'রাজশাহী', upz:'পবা',
+   c:'উপজেলার সব শেখ রাসেল ডিজিটাল ল্যাবের ব্যবহারের হার, যন্ত্রপাতির অবস্থা ও প্রশিক্ষণ সেশনের তথ্য এক ড্যাশবোর্ডে — জেলা ও সদর দপ্তর রিয়েলটাইমে দেখতে পারবে।',
+   i:'ল্যাব অব্যবহৃত থাকার হার চিহ্নিত করে সদ্ব্যবহার ৩০% বাড়ানোর লক্ষ্য।', st:'hq', by:'সহকারী প্রোগ্রামার, পবা'},
+  {t:'ভূমি অফিসের সেবা ট্র্যাকিং এসএমএস নোটিফিকেশন', cat:'ডিজিটাল সেবা', dist:'কুমিল্লা', upz:'দাউদকান্দি',
+   c:'নামজারিসহ ভূমি অফিসের আবেদন কোন ধাপে আছে তা আবেদনকারীকে স্বয়ংক্রিয় এসএমএসে জানানো — দালালনির্ভরতা ও অফিসে অপ্রয়োজনীয় যাতায়াত কমাতে।',
+   i:'মাসে ১,২০০+ আবেদনকারীর হয়রানি ও যাতায়াত ব্যয় হ্রাস।', st:'upazila', by:'সহকারী প্রোগ্রামার, দাউদকান্দি'},
+  {t:'হাওরাঞ্চলে অফলাইন-ফার্স্ট শিক্ষা কনটেন্ট সার্ভার', cat:'অবকাঠামো ও সংযোগ', dist:'কিশোরগঞ্জ', upz:'ইটনা',
+   c:'ইন্টারনেট-সীমিত হাওর এলাকার স্কুলে লোকাল ওয়াই-ফাই সার্ভারে জাতীয় শিক্ষা কনটেন্ট (ভিডিও, বই, কুইজ) অফলাইনে সরবরাহ; মাসে একবার সিংক।',
+   i:'সংযোগবিহীন ১৮টি বিদ্যালয়ের ৫,৫০০ শিক্ষার্থী ডিজিটাল কনটেন্টের আওতায় আসবে।', st:'district', by:'সহকারী প্রোগ্রামার, ইটনা'},
+  {t:'পর্যটন তথ্যের কিউআর-ভিত্তিক বহুভাষিক গাইড', cat:'ডিজিটাল সেবা', dist:'সিলেট', upz:'জাফলং',
+   c:'পর্যটন স্পটে স্থাপিত কিউআর কোড স্ক্যান করলে বাংলা-ইংরেজিতে স্থানের ইতিহাস, নিরাপত্তা নির্দেশনা ও জরুরি হেল্পলাইন — কোনো অ্যাপ ইনস্টল ছাড়াই।',
+   i:'বছরে লক্ষাধিক পর্যটকের তথ্যপ্রাপ্তি ও নিরাপত্তা সচেতনতা বৃদ্ধি।', st:'upazila', by:'সহকারী প্রোগ্রামার, গোয়াইনঘাট'},
+  {t:'দুর্যোগকালীন কমিউনিটি তথ্য রিলে নেটওয়ার্ক', cat:'অবকাঠামো ও সংযোগ', dist:'বরিশাল', upz:'মেহেন্দিগঞ্জ',
+   c:'ঘূর্ণিঝড়ে মোবাইল নেটওয়ার্ক বিপর্যয়ের সময় ইউনিয়ন পরিষদ ভবনকেন্দ্রিক লো-পাওয়ার রেডিও রিলে দিয়ে আশ্রয়কেন্দ্র ও ত্রাণ তথ্য প্রচারের ব্যবস্থা।',
+   i:'উপকূলীয় ৯টি ইউনিয়নের ৭০,০০০+ বাসিন্দার জরুরি তথ্যপ্রাপ্তি নিশ্চিত।', st:'upazila', by:'সহকারী প্রোগ্রামার, মেহেন্দিগঞ্জ'}
+];
+/* assign dockets */
+const seqByDist = {};
+ideas.forEach(x=>{
+  const code = DIST_CODE[x.dist] || 'GEN';
+  seqByDist[code] = (seqByDist[code]||0)+1;
+  x.docket = `DoICT/${code}/IDEA/2026/${String(seqByDist[code]).padStart(3,'0')}`;
+});
+
+/* ---------- stats ---------- */
+function refreshStats(){
+  document.getElementById('s-total').textContent = toBn(ideas.length);
+  document.getElementById('s-dist').textContent = toBn(new Set(ideas.map(x=>x.dist)).size);
+  document.getElementById('s-hq').textContent = toBn(ideas.filter(x=>x.st==='hq'||x.st==='selected').length);
+  document.getElementById('s-sel').textContent = toBn(ideas.filter(x=>x.st==='selected').length);
+}
+
+/* ---------- repository render ---------- */
+function refreshDistFilter(){
+  const sel = document.getElementById('f-filter-dist');
+  const cur = sel.value;
+  const dists = [...new Set(ideas.map(x=>x.dist))].sort((a,b)=>a.localeCompare(b,'bn'));
+  sel.innerHTML = '<option value="">সব জেলা</option>' + dists.map(d=>`<option${d===cur?' selected':''}>${d}</option>`).join('');
+}
+function renderRepo(){
+  const q = document.getElementById('q').value.trim();
+  const fd = document.getElementById('f-filter-dist').value;
+  const fs = document.getElementById('f-filter-status').value;
+  const list = ideas.filter(x=>
+    (!fd || x.dist===fd) &&
+    (!fs || x.st===fs) &&
+    (!q || (x.t+x.c).includes(q))
+  );
+  const box = document.getElementById('cards');
+  box.innerHTML = list.map((x)=>{
+    const s = STATUS[x.st];
+    return `<button class="card" type="button" onclick="openModal('${x.docket}')">
+      <div class="c-top">
+        <span class="c-docket">${x.docket}</span>
+        <span class="status ${s.cls}">${s.label}</span>
+      </div>
+      <h3>${x.t}</h3>
+      <p class="c-sum">${x.c}</p>
+      <div class="c-meta"><span>📍 ${x.upz}, ${x.dist}</span><span>${x.cat}</span></div>
+    </button>`;
+  }).join('');
+  document.getElementById('empty').classList.toggle('show', list.length===0);
+}
+
+/* ---------- modal ---------- */
+function openModal(docket){
+  const x = ideas.find(i=>i.docket===docket);
+  if(!x) return;
+  const s = STATUS[x.st];
+  document.getElementById('m-docket').textContent = x.docket;
+  document.getElementById('m-title').textContent = x.t;
+  document.getElementById('m-sub').textContent = 'জমাদানকারী: ' + (x.by || 'উপজেলা কার্যালয়');
+  document.getElementById('m-dist').textContent = x.dist;
+  document.getElementById('m-upz').textContent = x.upz;
+  document.getElementById('m-cat').textContent = x.cat;
+  document.getElementById('m-status').textContent = s.label;
+  document.getElementById('m-concept').textContent = x.c;
+  document.getElementById('m-impact').textContent = x.i ? ('প্রত্যাশিত প্রভাব: ' + x.i) : '';
+  document.getElementById('modal-back').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('modal-back').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+/* ---------- submission (demo, in-memory) ---------- */
+function submitIdea(){
+  const t = document.getElementById('f-title').value.trim();
+  const cat = document.getElementById('f-cat').value;
+  const dist = document.getElementById('f-district').value;
+  const upz = document.getElementById('f-upazila').value.trim();
+  const by = document.getElementById('f-name').value.trim();
+  const c = document.getElementById('f-concept').value.trim();
+  const i = document.getElementById('f-impact').value.trim();
+  const msg = document.getElementById('form-msg');
+
+  if(!t || !cat || !dist || !upz || !c){
+    msg.textContent = 'অনুগ্রহ করে তারকা (*) চিহ্নিত সব ঘর পূরণ করুন।';
+    msg.style.color = 'var(--red)';
+    msg.classList.add('show');
+    return;
+  }
+  const code = DIST_CODE[dist] || 'GEN';
+  seqByDist[code] = (seqByDist[code]||0)+1;
+  const docket = `DoICT/${code}/IDEA/2026/${String(seqByDist[code]).padStart(3,'0')}`;
+  ideas.unshift({t, cat, dist, upz, c, i, by: by || 'উপজেলা কার্যালয়', st:'upazila', docket});
+
+  msg.innerHTML = `প্রস্তাবনা গৃহীত হয়েছে · ডকেট নম্বর <span class="mono">${docket}</span> — জেলা কার্যালয়ের যাচাই-তালিকায় যুক্ত হলো এবং উন্মুক্ত রিপোজিটরিতে প্রদর্শিত হচ্ছে।`;
+  msg.style.color = 'var(--green)';
+  msg.classList.add('show');
+
+  ['f-title','f-upazila','f-name','f-concept','f-impact'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-cat').value=''; document.getElementById('f-district').value='';
+
+  refreshStats(); refreshDistFilter(); renderRepo();
+  document.getElementById('repo').scrollIntoView({behavior:'smooth'});
+}
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* init */
+refreshStats(); refreshDistFilter(); renderRepo();
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  UPAZILA
+  DISTRICT
+  HQ
+  ADMIN
+}
+
+enum Maturity {
+  CONCEPT
+  PROTOTYPE
+  PILOT
+  SCALE
+}
+
+enum Status {
+  UPAZILA
+  DISTRICT
+  HQ
+  SELECTED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  name         String
+  role         Role
+  district     String?
+  upazila      String?
+  ideas        Idea[]
+  dpps         Dpp[]
+  createdAt    DateTime @default(now())
+}
+
+model Idea {
+  id            String   @id @default(cuid())
+  docket        String   @unique
+  title         String
+  category      String
+  district      String
+  upazila       String?
+  concept       String
+  impact        String?
+
+  // Fields below mirror the official "উদ্ভাবন প্রকল্প ছক" (Innovation Project
+  // Format, public/innovationform.pdf). All optional at the DB level so
+  // existing rows and lightweight submissions stay valid; required-ness for
+  // new submissions is enforced in the submit form / server action instead.
+  officerName           String?
+  solutionDescription   String?
+  currentProcessMap     String?
+  proposedProcessMap    String?
+  pilotLocation         String?
+  implementationTimeline String?
+  teamMembers           Json?
+  resourceFinancial     String?
+  resourceManpower      String?
+  resourceTechnical     String?
+  resourceOther         String?
+  resourceSource        String?
+  workPlan              Json?
+
+  // Technology-portal metadata: which technologies the idea uses (keys from
+  // src/lib/tech.ts) and how far it has progressed toward real-world use.
+  techTags              Json?
+  maturity              Maturity @default(CONCEPT)
+
+  status        Status   @default(UPAZILA)
+  submittedById String
+  submittedBy   User     @relation(fields: [submittedById], references: [id])
+  dpp           Dpp?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+enum DppStatus {
+  DRAFT
+  READY
+}
+
+// Development Project Proforma prepared for a SELECTED idea. Field set follows
+// the Planning Commission DPP "Part-A: Project Summary"; replace/extend once
+// the ministry's final DPP format is provided.
+model Dpp {
+  id                 String    @id @default(cuid())
+  ideaId             String    @unique
+  idea               Idea      @relation(fields: [ideaId], references: [id], onDelete: Cascade)
+  projectName        String
+  projectNameEn      String?
+  sponsoringMinistry String
+  executingAgency    String
+  location           String?
+  implStart          String?
+  implEnd            String?
+  background         String?
+  objectives         String?
+  activities         String?
+  outputs            String?
+  planAlignment      String?
+  feasibility        String?
+  manpower           String?
+  risks              String?
+  sustainability     String?
+  costItems          Json?
+  fundGob            Float     @default(0)
+  fundOwn            Float     @default(0)
+  fundOther          Float     @default(0)
+  status             DppStatus @default(DRAFT)
+  preparedById       String?
+  preparedBy         User?     @relation(fields: [preparedById], references: [id])
+  finalizedAt        DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
